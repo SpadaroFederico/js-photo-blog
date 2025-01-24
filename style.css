@@ -42,6 +42,20 @@ display: grid;
   padding-bottom: 10px;
 }
 
+.card img:hover{
+    padding: 10px;
+    cursor: pointer;
+}
+
+.CardTitle{
+    font-family: "Edu Tas Beginner", serif;
+    font-weight: 100;
+}
+
+.CardDate{
+    font-family: "Sometype Mono", "monospace";
+}
+
 .card::before{
     position: absolute;
     content: "";
@@ -54,3 +68,17 @@ display: grid;
     background-size: 100%;
     background-repeat: no-repeat;
 }
+
+.popup-image {
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 60%; 
+    height: 70%;
+    z-index: 1000; 
+    display: block; 
+   
+}
+
+

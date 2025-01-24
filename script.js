@@ -28,10 +28,29 @@ axios.get(endpoint)
                     <p class="CardDate">${date}</p>
                 </div>
             ` 
-        }
-        
-    })
-    .catch(error => {
-        // se non funzina esegui:
-        console.error(error)
-    })
+            }
+    
+            // Dopo aver aggiunto tutte le card, seleziono tutte le immagini
+            const cardImages = document.querySelectorAll('.card img');
+    
+            // Aggiungo l'event listener a tutte le immagini
+            cardImages.forEach(function(img) {
+                img.addEventListener('click', function() {
+                    // Se l'immagine è già un pop-up, rimuoo la classe o
+                    if (img.classList.contains('popup-image')) {
+                        img.classList.remove('popup-image');
+                    } else {
+                        // Altrimenti aggiungo la classe per mostrare l'immagine come pop-up
+                        img.classList.add('popup-image');
+                    }
+                });
+            });
+    
+        })
+        .catch(error => {
+            // se non funziona esegui:
+            console.error(error);
+        });
+
+    
+    
