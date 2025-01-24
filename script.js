@@ -23,9 +23,9 @@ axios.get(endpoint)
             // creo le singole card
             ContainerOfCard.innerHTML += `
                 <div class="card">
+                    <img src="${SinglePost.url}">
                     <h2 class="CardTitle">${title}</h2>
                     <p class="CardDate">${date}</p>
-                    <span class="imageUrl">${url}</span>
                 </div>
             ` 
         }
