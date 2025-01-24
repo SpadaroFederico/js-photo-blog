@@ -24,8 +24,13 @@ main{
     background-image: url(img/cork.png);
 }
 
+.container{
+    display: flex;
+    justify-content: center;
+}
+
 .card{
     margin: 10px;
     border: solid black 4px;
-    padding: 10px;
+    padding: 20px;
 }
