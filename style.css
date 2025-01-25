@@ -42,9 +42,8 @@ display: grid;
   padding-bottom: 10px;
 }
 
-.card img:hover{
-    padding: 10px;
-    cursor: pointer;
+.card:hover {
+    transform: rotate(5deg);
 }
 
 .CardTitle{
@@ -78,7 +77,44 @@ display: grid;
     height: 70%;
     z-index: 1000; 
     display: block; 
-   
 }
 
+/* media query */
 
+/* Tablet */
+@media screen and (max-width: 768px) {
+    .container {
+        /* uso grid template per mantenere su due colonne le card */
+
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px; 
+    }
+
+    .card {
+        padding: 20px; 
+        font-size: 14px; 
+    }
+    
+    .main-title{
+        font-size: 40px;
+    }
+}
+
+/* Smartphone */
+@media screen and (max-width: 480px) {
+    .container {
+         /* uso grid template per mantenere su una colonna le card */
+        
+        grid-template-columns: 1fr; 
+        gap: 10px; 
+    }
+
+    .card {
+        padding: 15px; 
+        font-size: 12px; 
+    }
+
+    .main-title{
+        font-size: 25px;
+    }
+}
