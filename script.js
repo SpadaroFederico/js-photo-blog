@@ -29,28 +29,48 @@ axios.get(endpoint)
                 </div>
             ` 
             }
-    
-            // Dopo aver aggiunto tutte le card, seleziono tutte le immagini
-            const cardImages = document.querySelectorAll('.card img');
-    
-            // Aggiungo l'event listener a tutte le immagini
-            cardImages.forEach(function(img) {
-                img.addEventListener('click', function() {
-                    // Se l'immagine è già un pop-up, rimuoo la classe o
-                    if (img.classList.contains('popup-image')) {
-                        img.classList.remove('popup-image');
-                    } else {
-                        // Altrimenti aggiungo la classe per mostrare l'immagine come pop-up
-                        img.classList.add('popup-image');
-                    }
-                });
-            });
-    
+            
+            // Definisco l'overlay
+            addOverlayFunctionality();
         })
-        .catch(error => {
-            // se non funziona esegui:
-            console.error(error);
-        });
 
+        .catch(error => {
+            console.error('Errore nel recupero dei dati:', error);
+        });
     
+    // Funzione per l'overlay
+    function addOverlayFunctionality() {
+        
+        // Creazione in html dell'overlay
+        const overlay = document.createElement('div');
+        overlay.classList.add('overlay');
+        overlay.innerHTML = `
+            <div class="overlay-content">
+                <img class="overlay-image" src="" alt="Immagine">
+                <button class="close-overlay">Chiudi</button>
+            </div>
+        `;
+
+        // aggiungo l'overlay alla fine del contenuto già presente all'interno del tag 
+        document.body.appendChild(overlay);
     
+        const overlayImage = overlay.querySelector('.overlay-image');
+        const closeOverlayButton = overlay.querySelector('.close-overlay');
+    
+        // aggiungo l'apertura dell'overlay al click
+        const cardImages = document.querySelectorAll('.card img');
+        cardImages.forEach(img => {
+            img.addEventListener('click', () => {
+                overlayImage.src = img.src;
+                overlay.classList.add('active');
+            });
+        });
+    
+        // aggiungo la chiusura dell'overlay al click
+        closeOverlayButton.addEventListener('click', () => {
+            overlay.classList.remove('active');
+
+            // svuoto il contenuto
+            overlayImage.src = ''; 
+        });
+    }
